@@ -174,8 +174,10 @@ def burp_import(xml, requests_and_responses=False):
             issue['Summary'] = UnsortableOrderedDict()
             issue['Summary']['Description'] = ''
             issue['Summary']['Recommendation'] = ''
-            issue['Description'] = ''
-            issue['Recommendation'] = ''
+            issue['Description'] = mangle.soap_flatten(issue_detail)
+            issue['Recommendation'] = mangle.soap_flatten(issue_background)
+            #issue['Description'] = mangle.soap_flatten(issue_detail)
+            #issue['Recommendation'] = mangle.soap_flatten(issue_background)
             for j in ['ReportSections', 'Example']:
                 if j not in issue:
                     issue[j] = i[j]
